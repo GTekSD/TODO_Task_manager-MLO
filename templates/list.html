@@ -1,0 +1,34 @@
+<style>
+    .content
+    {
+      max-width: 500px;
+      margin: auto;
+      padding: 10px;
+    }
+</style>
+
+<body style="background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjExMzk2fQ&w=1000&q=80');">
+    <div class="label">
+        <h1 style="text-align:center;"><img src="https://img.pngio.com/bullets-document-file-list-organizer-report-text-todo-icon-icon-organizer-png-512_512.png" alt="MLO" style="float:left;width:45px;height:45px;"> MASTER LIST ORGINAZER </h1>
+        <hr>
+        <h3> Welcome suhas </h3>
+
+            <form action="/task" method="post">
+                <p><input type="text" name="content"></p>
+                <input type="submit" value="Add task">
+            </form>
+            
+            <ol>
+                {% for task in tasks %}
+                    <li>
+                        {% if task.done %} <strike> {% endif %}{{ task.content }} {% if task.done %} </strike>{% endif %}
+                        <a href="/done/{{ task.id }}">Done</a>
+                        <a href="/delete/{{ task.id }}">Delete</a>
+                    </li>
+                {% endfor %}
+            </ol>
+            
+         <p style="text-align:center;"><a href="/home"><button>HOME</button></a></p>
+
+    </div>
+</body>
